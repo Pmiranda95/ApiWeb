@@ -18,6 +18,8 @@
   "homepage": "https://github.com/Pmiranda95/ApiWeb#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5",
     "swagger-jsdoc": "^5.0.1",
     "swagger-ui-express": "^4.1.4"
   }
