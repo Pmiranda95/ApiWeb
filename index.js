@@ -5,6 +5,11 @@ const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const sequelize = require("./database/db");
 const User = require("./database/models/user");
+const Pedido = require("./database/models/Pedido");
+const Producto = require("./database/models/Producto");
+const Cliente = require("./database/models/Cliente");
+const Direccion = require("./database/models/Direccion");
+
 //Swagger documents
 const swaggerOption = {
     swaggerDefinition:{

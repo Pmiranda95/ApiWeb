@@ -6,7 +6,7 @@ class User extends Model {}
 User.init({
   username: DataTypes.STRING,
   password: DataTypes.STRING
-}, { sequelize, modelName: 'user' });
+}, { sequelize, modelName: 'user',timestamps:false  });
 
 
 module.exports= User;
