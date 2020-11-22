@@ -4,9 +4,8 @@ const sequelize = require("../db");
 
 class Pedido extends Model {}
 Pedido.init({
-  producto: DataTypes.STRING,
   cantidad: DataTypes.FLOAT,
-  total: DataTypes.BLOB
+  total: DataTypes.FLOAT
 }, { sequelize, modelName: 'Pedido' ,timestamps:false });
 
 //Pedido.belongsToMany(producto,{ through: 'ActorMovies' });

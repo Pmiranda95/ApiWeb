@@ -1,7 +1,7 @@
-const Routes = (app,swaggerUi,swaggerDocs) => {
-    
-    app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerDocs));
+const {getUsers,getUserById} = require("./controlers/ControllerUser");
 
+const Routes = (app,swaggerUi,swaggerDocs) => {
+    app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerDocs));
 
     /**
      * @swagger
@@ -12,9 +12,7 @@ const Routes = (app,swaggerUi,swaggerDocs) => {
      *      '200':
      *          description: A Succesful response 
      */
-    app.get("/pedidos", (req, res) => {
-        res.status(200).send("Customer results");
-      });
+    app.get("/pedidos",getUsers);
       
     /**
      * @swagger
@@ -26,7 +24,7 @@ const Routes = (app,swaggerUi,swaggerDocs) => {
      *          description: A Succesful response 
      */
     app.post("/pedido", (req, res) => {
-        res.status(200).send("Customer results");
+        res.status(200).send("Customer result");
       });
      
     /**
@@ -39,7 +37,7 @@ const Routes = (app,swaggerUi,swaggerDocs) => {
      *          description: A Succesful response 
      */
     app.put("/pedidos", (req, res) => {
-        res.status(200).send("Customer results");
+        res.status(200).send("Customer resul");
       });
      
     /**
@@ -52,7 +50,7 @@ const Routes = (app,swaggerUi,swaggerDocs) => {
      *          description: A Succesful response 
      */
     app.delete("/pedido", (req, res) => {
-        res.status(200).send("Customer results");
+        res.status(200).send("Customer resu");
       });
     /**
      * @swagger
