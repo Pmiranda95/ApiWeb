@@ -19,7 +19,7 @@ exports.getUsers =  (req, res) =>{
     }*/
 }
 
-exports.getUserById = (req, res, next) => {
+exports.createUser = (req, res, next) => {
     // Validate request parameters, queries using express-validator
     
     try {

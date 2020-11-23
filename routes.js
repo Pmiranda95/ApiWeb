@@ -1,12 +1,13 @@
-const {getUsers,getUserById} = require("./controlers/ControllerUser");
-const {createProducto,getPruductos} = require("./controlers/ControllerProducto");
+const {getUsers,createUser} = require("./controlers/ControllerUser");
+const {createProducto,getPruductos,getProductoById,editProducto,deleteProducto} = require("./controlers/ControllerProducto");
+const {createPedido,getPedidos} = require("./controlers/ControllerPedido");
 
 const Routes = (app,swaggerUi,swaggerDocs) => {
     app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerDocs));
 
     /**
      * @swagger
-     * pedidos:
+     * /pedidos:
      *  get:
      *    description: trae todos los pedidos generados
      *    responses:
@@ -17,7 +18,7 @@ const Routes = (app,swaggerUi,swaggerDocs) => {
       
     /**
      * @swagger
-     * pedido:
+     * /pedido:
      *  post:
      *    description: Alta nuevo pedido
      *    responses:
@@ -30,32 +31,32 @@ const Routes = (app,swaggerUi,swaggerDocs) => {
      
     /**
      * @swagger
-     * pedido:
+     * /pedido/{idPedido}:
      *  put:
      *    description: modifica el pedido por id
      *    responses:
      *      '200':
      *          description: A Succesful response 
      */
-    app.put("/pedidos", (req, res) => {
+    app.put("/pedidos/:idPedido", (req, res) => {
         res.status(200).send("Customer resul");
       });
      
     /**
      * @swagger
-     * pedido:
+     * /pedido/{idPedido}:
      *  delete:
      *    description: elimina el pedido por id
      *    responses:
      *      '200':
      *          description: A Succesful response 
      */
-    app.delete("/pedido", (req, res) => {
+    app.delete("/pedido/:idPedido", (req, res) => {
         res.status(200).send("Customer resu");
       });
     /**
      * @swagger
-     * productos:
+     * /productos:
      *  get:
      *    description: trae todos los pedidos generados
      *    responses:
@@ -66,7 +67,7 @@ const Routes = (app,swaggerUi,swaggerDocs) => {
 
     /**
      * @swagger
-     * producto:
+     * /producto:
      *  post:
      *    description: Alta de nuevo producto
      *    responses:
@@ -79,29 +80,25 @@ const Routes = (app,swaggerUi,swaggerDocs) => {
       
     /**
      * @swagger
-     * producto:
+     * /producto/{idProducto}:
      *  put:
      *    description: modifica el Producto por id
      *    responses:
      *      '200':
      *          description: A Succesful response 
      */
-    app.put("/producto", (req, res) => {
-        res.status(200).send("Customer results");
-      });
+    app.put("/producto/:idProducto",editProducto);
     
     /**
      * @swagger
-     * producto:
+     * /producto/{idProducto}:
      *  delete:
      *    description: elimina el producto por id
      *    responses:
      *      '200':
      *          description: A Succesful response 
      */
-    app.delete("/producto", (req, res) => {
-        res.status(200).send("Customer results");
-      });
+    app.delete("/producto/:idProducto", deleteProducto);
 }
 
 exports.Routes = Routes ;
