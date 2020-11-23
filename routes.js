@@ -1,4 +1,5 @@
 const {getUsers,getUserById} = require("./controlers/ControllerUser");
+const {createProducto,getPruductos} = require("./controlers/ControllerProducto");
 
 const Routes = (app,swaggerUi,swaggerDocs) => {
     app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerDocs));
@@ -61,9 +62,7 @@ const Routes = (app,swaggerUi,swaggerDocs) => {
      *      '200':
      *          description: A Succesful response 
      */
-    app.get("/productos", (req, res) => {
-        res.status(200).send("Customer results");
-      });
+    app.get("/productos", getPruductos);
 
     /**
      * @swagger
@@ -74,9 +73,7 @@ const Routes = (app,swaggerUi,swaggerDocs) => {
      *      '200':
      *          description: A Succesful response 
      */
-    app.post("/producto", (req, res) => {
-        res.status(200).send("Customer results");
-      });
+    app.post("/producto", createProducto);
 
 
       

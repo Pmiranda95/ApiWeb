@@ -10,6 +10,6 @@ Producto.init({
   imagenProducto: DataTypes.BLOB
 }, { sequelize, modelName: 'Producto',timestamps:false });
 
-Producto.belongsToMany(Pedido,{ through: 'ActorMovies' });
-Pedido.belongsToMany(Producto,{ through: 'ActorMovies' });
+Producto.belongsToMany(Pedido,{ through: 'ProductoPedido' });
+Pedido.belongsToMany(Producto,{ through: 'ProductoPedido' });
 module.exports= Producto;
