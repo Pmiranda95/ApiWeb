@@ -4,7 +4,6 @@ const app = express();
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const sequelize = require("./database/db");
-const bodyParser = require('body-parser');
 const User = require("./database/models/user");
 const Pedido = require("./database/models/Pedido");
 const Producto = require("./database/models/Producto");

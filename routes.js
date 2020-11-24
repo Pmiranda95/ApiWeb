@@ -1,7 +1,7 @@
 const {getUsers,createUser} = require("./controlers/ControllerUser");
 const {createProducto,getPruductos,getProductoById,editProducto,deleteProducto} = require("./controlers/ControllerProducto");
 const {createPedido,getPedidos} = require("./controlers/ControllerPedido");
-
+const {createCliente} = require("./controlers/ControllerCliente");
 const Routes = (app,swaggerUi,swaggerDocs) => {
     app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerDocs));
 
@@ -13,6 +13,10 @@ const Routes = (app,swaggerUi,swaggerDocs) => {
      *    responses:
      *      '200':
      *          description: A Succesful response 
+     *      '400':
+     *          description: no existen pedidos 
+     *    parameters:
+     *       'id': 
      */
     app.get("/pedidos",getUsers);
       
@@ -99,6 +103,17 @@ const Routes = (app,swaggerUi,swaggerDocs) => {
      *          description: A Succesful response 
      */
     app.delete("/producto/:idProducto", deleteProducto);
+
+    /**
+     * @swagger
+     * /cliente:
+     *  post:
+     *    description: 
+     *    responses:
+     *      '200':
+     *          description: A Succesful response 
+     */
+    app.post("/cliente", createCliente);
 }
 
 exports.Routes = Routes ;
