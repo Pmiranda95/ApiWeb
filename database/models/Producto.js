@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require("../db");
-const Pedido =  require("./Pedido");
+const Item = require('./Item');
 
 class Producto extends Model {}
 Producto.init({
@@ -10,6 +10,6 @@ Producto.init({
   imagenProducto: DataTypes.BLOB
 }, { sequelize, modelName: 'Producto',timestamps:false });
 
-Producto.belongsToMany(Pedido,{ through: 'ProductoPedido' });
-Pedido.belongsToMany(Producto,{ through: 'ProductoPedido' });
+Producto.hasOne(Item);
+Item.belongsTo(Producto);
 module.exports= Producto;

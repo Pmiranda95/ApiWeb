@@ -2,6 +2,8 @@ const {getUsers,createUser} = require("./controlers/ControllerUser");
 const {createProducto,getPruductos,getProductoById,editProducto,deleteProducto} = require("./controlers/ControllerProducto");
 const {createPedido,getPedidos} = require("./controlers/ControllerPedido");
 const {createCliente} = require("./controlers/ControllerCliente");
+const {createItem,getItems} = require("./controlers/ControllerItem");
+
 const Routes = (app,swaggerUi,swaggerDocs) => {
     app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerDocs));
 
@@ -29,9 +31,7 @@ const Routes = (app,swaggerUi,swaggerDocs) => {
      *      '200':
      *          description: A Succesful response 
      */
-    app.post("/pedido", (req, res) => {
-        res.status(200).send("Customer result");
-      });
+    app.post("/pedido", createPedido);
      
     /**
      * @swagger
@@ -114,6 +114,28 @@ const Routes = (app,swaggerUi,swaggerDocs) => {
      *          description: A Succesful response 
      */
     app.post("/cliente", createCliente);
+
+     /**
+     * @swagger
+     * /item:
+     *  post:
+     *    description: 
+     *    responses:
+     *      '200':
+     *          description: A Succesful response 
+     */
+    app.post("/item", createItem);
+
+    /**
+     * @swagger
+     * /items:
+     *  get:
+     *    description: 
+     *    responses:
+     *      '200':
+     *          description: A Succesful response 
+     */
+    app.get("/items", getItems);
 }
 
 exports.Routes = Routes ;

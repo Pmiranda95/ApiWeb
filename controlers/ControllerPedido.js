@@ -3,8 +3,9 @@ const Cliente = require("../database/models/Cliente");
 
 exports.createPedido = (req, res, next) => {
     Pedido.create({
-        cantidad:req.body.nombre,
+        cantidad:req.body.cantidad,
         total:req.body.descripcion,
+        estado:req.body.estado,
         clienteId:req.body.clienteId
     }).then(producto =>{
         res.json(producto);

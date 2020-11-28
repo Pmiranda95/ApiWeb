@@ -1,13 +1,15 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require("../db");
-//const producto = require("./Producto");
+const Item = require("./Item");
 
 class Pedido extends Model {}
 Pedido.init({
   cantidad: DataTypes.FLOAT,
-  total: DataTypes.FLOAT 
+  total: DataTypes.FLOAT,
+  estado: DataTypes.STRING
 }, { sequelize, modelName: 'Pedido' ,timestamps:false });
 
-//Pedido.belongsToMany(producto,{ through: 'ActorMovies' });
+Pedido.hasMany(Item);
+Item.belongsTo(Pedido);
 
 module.exports= Pedido;

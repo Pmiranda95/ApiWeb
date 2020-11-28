@@ -1,11 +1,7 @@
 const Cliente = require("../database/models/Cliente");
 const Direccion = require("../database/models/Direccion");
 
-const {createDireccion} = require("../controlers/ControllerDirreccion");
-exports.createCliente = (req, res) => {
-    
-    //const direccion =  createDireccion("Bolonia",2528,"Evaristo Carriego","Andres Bello");
-    
+exports.createCliente = (req, res) => {    
     Direccion.create({
         calle:req.body.calle,
         altura:req.body.altura,
@@ -24,14 +20,4 @@ exports.createCliente = (req, res) => {
         res.json(e);
     })
     
-    
-    //res.send("dsaf:"+direccion);
-    /*Cliente.create({
-        DirreccionId:'',
-        nombreCompleto:req.body.nombreCompleto,
-    }).then(cliente =>{
-        res.json(cliente);
-    }).catch(e=>{
-        res.json(e);
-    })*/
 }
