@@ -1,9 +1,12 @@
 const express = require("express");
-const routes = require("./routes");
 const app = express();
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const sequelize = require("./database/db");
+const pedidos = require("./routes/routesPedido")
+const clientes = require("./routes/routesCliente");
+const productos = require("./routes/routesProducto");
+const items = require("./routes/routesItems");
 const User = require("./database/models/user");
 const Pedido = require("./database/models/Pedido");
 const Producto = require("./database/models/Producto");
@@ -22,14 +25,18 @@ const swaggerOption = {
             server:["http://localhost:3000"]
         }
     },
-    apis:["routes.js"]
+    apis:["./routes/routesPedido.js","./routes/routesCliente.js","./routes/routesProducto.js","./routes/routesItems.js"]
 }
 
 const swaggerDocs = swaggerJsDoc(swaggerOption);
-//routes
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
-routes.Routes(app,swaggerUi,swaggerDocs);
+//routes
+app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerDocs));  
+app.use("/V1",pedidos)
+app.use("/V2",clientes);
+app.use("/V3",productos);
+app.use("/V4",items);
 
 
 app.listen(3000, () => {

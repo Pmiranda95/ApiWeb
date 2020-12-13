@@ -1,55 +1,61 @@
-const RoutesPedido = (app) => {
+const {getPedidos} = require("../controlers/ControllerPedido");
+const {createPedido} = require("../controlers/ControllerPedido");
+
+const express = require("express");
+let router = express.Router();
+
+
     /**
      * @swagger
-     * pedidos:
+     * /pedidos:
      *  get:
      *    description: trae todos los pedidos generados
      *    responses:
      *      '200':
      *          description: A Succesful response 
+     *      '400':
+     *          description: no existen pedidos 
+     *    parameters:
+     *       'id': 
      */
-    app.get("/pedidos", (req, res) => {
-        res.status(200).send("Customer results");
-      });
+    router.get("/pedidos",getPedidos);
       
     /**
      * @swagger
-     * pedido:
+     * /pedido:
      *  post:
      *    description: Alta nuevo pedido
      *    responses:
      *      '200':
      *          description: A Succesful response 
      */
-    app.post("/pedido", (req, res) => {
-        res.status(200).send("Customer results");
-      });
+    router.post("/pedido", createPedido);
      
     /**
      * @swagger
-     * pedido:
+     * /pedido/{idPedido}:
      *  put:
      *    description: modifica el pedido por id
      *    responses:
      *      '200':
      *          description: A Succesful response 
      */
-    app.put("/pedidos", (req, res) => {
-        res.status(200).send("Customer results");
+    router.put("/pedidos/:idPedido", (req, res) => {
+        res.status(200).send("Customer resul");
       });
      
     /**
      * @swagger
-     * pedido:
+     * /pedido/{idPedido}:
      *  delete:
      *    description: elimina el pedido por id
      *    responses:
      *      '200':
      *          description: A Succesful response 
      */
-    app.delete("/pedido", (req, res) => {
-        res.status(200).send("Customer results");
+    router.delete("/pedido/:idPedido", (req, res) => {
+        res.status(200).send("Customer resu");
       });
-}
+   
 
-exports.RoutesPedido = RoutesPedido;
+module.exports = router;
