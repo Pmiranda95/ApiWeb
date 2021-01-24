@@ -1,0 +1,47 @@
+USUARIO VENDEDOR
+{
+"id": 699769041,
+"nickname": "TESTAWARXVCM",
+"password": "qatest1496",
+"site_status": "active",
+"email": "test_user_73191612@testuser.com"
+}
+
+
+1_Credenciales de Prueba  =  TEST-2651337350780722-011022-32be52a9d5eaab8b9fa957800801ac90-699769041   -> para usar para el vendedor 
+
+2_ Crear una preferencia con datos del vendedor 
+https://api.mercadopago.com/checkout/preferences -> Endpoint 
+
+
+// BODY del request a la compra 
+{
+  "items": [
+    {
+      "title": "Hambur Wolox",
+      "description": "Hambuguesa con queso Chedar",
+      "quantity": 1,
+      "currency_id": "ARS",
+      "unit_price": 10
+    }
+  ],
+   "back_urls": {
+        "success": "https://www.tu-sitio/success",
+        "failure": "http://www.tu-sitio/failure",
+        "pending": "http://www.tu-sitio/pending"
+    },
+    "auto_return": "approved"
+}
+
+
+
+
+
+USUARIO COMPRADOR
+{
+"id": 699789180,
+"nickname": "TESTX6UHP0LV",
+"password": "qatest2142",
+"site_status": "active",
+"email": "test_user_90392554@testuser.com"
+}
