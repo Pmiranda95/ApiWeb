@@ -12,7 +12,7 @@ const Pedido = require("./database/models/Pedido");
 const Producto = require("./database/models/Producto");
 const Cliente = require("./database/models/Cliente");
 const Direccion = require("./database/models/Direccion");
-
+const upload = require('./lib/storage');
 //Swagger documents
 const swaggerOption = {
     swaggerDefinition:{
@@ -31,6 +31,7 @@ const swaggerOption = {
 const swaggerDocs = swaggerJsDoc(swaggerOption);
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
+app.use("/public",express.static(`${__dirname}/storage/imgs`));
 //routes
 app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerDocs));  
 app.use("/V1",pedidos)
@@ -38,6 +39,7 @@ app.use("/V2",clientes);
 app.use("/V3",productos);
 app.use("/V4",items);
 
+app.post('/prueba',upload.single('image'))
 
 app.listen(3000, () => {
  console.log("El servidor está inicializado en el puerto 3000");
