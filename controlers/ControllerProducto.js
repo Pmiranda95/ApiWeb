@@ -3,9 +3,7 @@ const Producto = require("../database/models/Producto");
 
 exports.createProducto = (req, res) => {
     const {filename} = req.file;
-    if(req.file){        
-        Producto.setImagenProducto(filename);
-    }
+    
     Producto.create({
         nombre:req.body.nombre,
         descripcion:req.body.descripcion,

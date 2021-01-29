@@ -12,6 +12,8 @@ const Pedido = require("./database/models/Pedido");
 const Producto = require("./database/models/Producto");
 const Cliente = require("./database/models/Cliente");
 const Direccion = require("./database/models/Direccion");
+const Imagen = require("./database/models/Imagen");
+
 const upload = require('./lib/storage');
 //Swagger documents
 const swaggerOption = {
@@ -43,7 +45,7 @@ app.post('/prueba',upload.single('image'))
 
 app.listen(3000, () => {
  console.log("El servidor está inicializado en el puerto 3000");
- sequelize.sync({force:false}).then(()=>{
+ sequelize.sync({force:true}).then(()=>{
      console.log("se conecto a la base de datos");
  }).catch(error=>{
      console.log("se a producido en error: "+error);
