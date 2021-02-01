@@ -1,6 +1,4 @@
 const {createProducto,getPruductos,editProducto,deleteProducto} = require("../controlers/ControllerProducto");
-const upload = require('../lib/storage');
-
 const express = require("express");
 let router = express.Router();
 
@@ -25,7 +23,7 @@ let router = express.Router();
      *      '200':
      *          description: A Succesful response 
      */
-    router.post("/producto", upload.single('image'), createProducto);
+    router.post("/producto",createProducto);
 
 
       

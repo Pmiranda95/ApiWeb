@@ -1,14 +1,11 @@
 const Producto = require("../database/models/Producto");
 
 
-exports.createProducto = (req, res) => {
-    const {filename} = req.file;
-    
+exports.createProducto = (req, res) => {    
     Producto.create({
         nombre:req.body.nombre,
         descripcion:req.body.descripcion,
         precio:req.body.precio,
-        imagenProducto:"http://localhost:3000/"+"public/"+filename
     }).then(producto =>{
         res.json(producto);
     }).catch(e=>{

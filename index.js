@@ -7,6 +7,7 @@ const pedidos = require("./routes/routesPedido")
 const clientes = require("./routes/routesCliente");
 const productos = require("./routes/routesProducto");
 const items = require("./routes/routesItems");
+const imagen = require("./routes/routesImagen");
 const User = require("./database/models/user");
 const Pedido = require("./database/models/Pedido");
 const Producto = require("./database/models/Producto");
@@ -40,12 +41,13 @@ app.use("/V1",pedidos)
 app.use("/V2",clientes);
 app.use("/V3",productos);
 app.use("/V4",items);
+app.use("/V5",imagen);
 
 app.post('/prueba',upload.single('image'))
 
 app.listen(3000, () => {
  console.log("El servidor está inicializado en el puerto 3000");
- sequelize.sync({force:true}).then(()=>{
+ sequelize.sync({force:false}).then(()=>{
      console.log("se conecto a la base de datos");
  }).catch(error=>{
      console.log("se a producido en error: "+error);
